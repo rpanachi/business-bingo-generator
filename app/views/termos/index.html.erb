@@ -1,0 +1,20 @@
+<h1>Listing termos</h1>
+
+<table>
+  <tr>
+    <th>Nome</th>
+  </tr>
+
+<% @termos.each do |termo| %>
+  <tr>
+    <td><%=h termo.nome %></td>
+    <td><%= link_to 'Edit', edit_termo_path(termo) %></td>
+    <td><%= link_to 'Destroy', termo, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New termo', new_termo_path %><br/>
+<%= link_to 'Voltar', :controller => "bingo", :action => "index" %>

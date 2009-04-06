@@ -1,0 +1,79 @@
+
+<style type="text/css">
+  #resizable {padding: 0; }
+  #resizable h3 { text-align: center; margin: 0; }
+</style>
+    
+<script type="text/javascript">
+
+  var line_distance = 50;
+  var column_distance = 100;
+
+  $(document).ready(function() {
+  
+  	table = $("<table></table");
+    table.attr("id", "table");
+    table.attr("border", 1);
+    table.attr("cellspacing", 0);
+
+    generate_table(table, column_distance * 5, line_distance * 5);
+    
+    resizable = $("#resizable");
+    resizable.css("width", column_distance * 5);
+    resizable.css("height", line_distance * 5);
+    resizable.css("border", 1);
+    resizable.append(table);
+    resizable.resizable({ 
+      grid: [column_distance, line_distance],
+      maxHeight: line_distance * 5,
+      minHeight: line_distance,
+      maxWidth: column_distance * 5,
+      minWidth: column_distance,
+      stop: function(event, ui) {
+        generate_table(table, resizable.width(), resizable.height());
+        $("#bingo_linhas").val(resizable.height() / line_distance);
+        $("#bingo_colunas").val(resizable.width() / column_distance);
+      }
+    });
+  });
+
+  function generate_table(table, width, height) {
+
+    table.html("");
+    table.attr("width", width);
+    table.attr("height", height);
+
+    for (j = 0; j < height; j += line_distance) {
+      tr = $("<tr></tr>");
+      for (i = 0; i < width; i += column_distance) {
+        td = $("<td></td>");
+        tr.append(td);
+      }
+      table.append(tr);
+    }
+  }
+</script>
+    
+<h1>Business Bingo Generator</h1>
+
+<%= link_to 'Termos', termos_path %>
+
+<h2>Criar novo bingo</h2>
+<% form_for @bingo, :url => { :action => "create" } do |f| %>
+  <%= f.error_messages %>
+  <%= f.hidden_field :linhas %>
+  <%= f.hidden_field :colunas %>
+  <p>Defina o tamanho das cartelas</p>
+  <div id="resizable">
+  </div>
+  <p>
+    <%= f.label :quantidade, "Quantidade de cartelas" %><br />
+    <%= f.text_field :quantidade %>
+  </p>
+  <p>
+    <%= f.submit 'Gerar Cartelas' %>
+  </p>
+<% end %>
+
+
+

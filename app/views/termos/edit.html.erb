@@ -1,0 +1,15 @@
+<h1>Editing termo</h1>
+
+<% form_for(@termo) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :nome %><br />
+    <%= f.text_field :nome %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', termos_path %>

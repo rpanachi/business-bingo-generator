@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  	<link type="text/css" href="css/smoothness/jquery-ui-1.7.1.custom.css" rel="stylesheet" />	
+		<script type="text/javascript" src="js/jquery-1.3.2.min.js"></script>
+		<script type="text/javascript" src="js/jquery-ui-1.7.1.custom.min.js"></script>
+    <style type="text/css">
+	    #resizable { width: 200px; height: 100px; padding: 0.5em; }
+	    #resizable h3 { text-align: center; margin: 0; }
+    </style>
+		<script type="text/javascript">
+		
+		
+		  $(document).ready(function() {
+		  
+		  	table = $("<table></table");
+	      table.attr("id", "table");
+	      table.attr("border", "1");
+	      table.attr("width", 200);
+	      table.attr("height", 100);
+
+        generate_table(table, 200, 100);
+        
+		    resizable = $("#resizable");
+		    resizable.append(table);
+		    resizable.resizable({ 
+		      grid: [100, 50],
+		      stop: function(event, ui) {
+		        generate_table($("#table"), resizable.width(), resizable.height());
+		      }
+		    });
+	    });
+
+	    function generate_table(table, width, height) {
+
+        table.html("");
+        table.attr("width", width);
+        table.attr("height", height);
+
+	      for (j = 0; j < height; j += 50) {
+	        tr = $("<tr></tr>");
+  	      for (i = 0; i < width; i += 100) {
+  	        td = $("<td></td>");
+  	        tr.append(td);
+	        }
+	        table.append(tr);
+	      }
+	    }
+		</script>
+  </head>
+  <body>
+    <div id="resizable">
+    </div>
+	</body>
+</html>
+
+

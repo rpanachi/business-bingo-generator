@@ -1,0 +1,17 @@
+<h1>Business Bingo Generator</h1>
+<h2>Cartelas geradas</h2>
+<% @cards.each do |card| %>
+   <!--<h3>Cartão #</h3>-->
+   <table border="1" cellspacing="0" width="400px">
+   <% card.each do |line| %>
+      <tr>
+         <% line.each do |word| %>
+            <td><%= word %></td>
+         <% end %>
+      </tr>
+   <% end %>
+   </table>
+   <br/>
+<% end %>
+<br/>
+<%= link_to "Voltar", :action => :index %>
