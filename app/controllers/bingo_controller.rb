@@ -2,12 +2,9 @@ class BingoController < ApplicationController
 
   layout "default"
   
-  def title
-    "Business Bingo Generator"
-  end
-
   def index
-    @bingo = Bingo.new :linhas => 3, :colunas => 3, :quantidade => 1
+    @bingo = Bingo.new :linhas => 5, :colunas => 5, :quantidade => 1
+    carrega_termos
   end
 
   def create
@@ -15,11 +12,17 @@ class BingoController < ApplicationController
     @bingo = Bingo.new params[:bingo]
   
     if (!@bingo.valid?) 
-       #flash[:errors] = ["Informe os dados corretos!"]
+       carrega_termos  #ideia melhor?
        render :action => "index"
     else
        @cards = @bingo.gera_cartoes
     end
+  end
+
+  private
+  
+  def carrega_termos
+    @termos = Termo.all
   end
 
 end

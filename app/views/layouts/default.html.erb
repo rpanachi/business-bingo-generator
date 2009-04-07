@@ -4,17 +4,31 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-  <title><%= controller.title %></title>
+  <title>Business BINGO! Generator</title>
   <%= stylesheet_link_tag 'scaffold' %>
-  <%= stylesheet_link_tag 'smoothness/jquery-ui' %>
-  <%= javascript_include_tag 'jquery' %>
-  <%= javascript_include_tag 'jquery-ui' %>
+
+  <!-- Framework CSS -->
+  <%= stylesheet_link_tag 'blueprint/screen', :media => 'screen, projection' %>
+  <%= stylesheet_link_tag 'blueprint/print', :media => 'print' %>
+  <!--[if IE]><%= stylesheet_link_tag 'blueprint/ie', :media => 'screen, projection' %><![endif]-->
+
 </head>
 <body>
 
 <p style="color: green"><%= flash[:notice] %></p>
 
-<%= yield %>
+	<div class="container">  
+		<h1>Business BINGO! Generator</h1>
+		<hr>
+		<h2 class="alt">Reuniões, seminários, conferências ... tudo mais divertido!</h2>
+	  <hr>
+
+      <%= yield %>
+
+		<hr>
+    <p>rodape aqui</p>
+	</div>
 
 </body>
 </html>
+

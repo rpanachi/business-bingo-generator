@@ -1,4 +1,3 @@
-<h1>Listing termos</h1>
 
 <table>
   <tr>
@@ -8,13 +7,14 @@
 <% @termos.each do |termo| %>
   <tr>
     <td><%=h termo.nome %></td>
-    <td><%= link_to 'Edit', edit_termo_path(termo) %></td>
-    <td><%= link_to 'Destroy', termo, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Editar', edit_termo_path(termo) %></td>
+    <td><%= link_to 'Excluir', termo, :confirm => 'Você tem certeza ?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New termo', new_termo_path %><br/>
+<%= link_to 'Novo', new_termo_path %>
 <%= link_to 'Voltar', :controller => "bingo", :action => "index" %>
+

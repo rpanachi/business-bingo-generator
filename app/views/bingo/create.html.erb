@@ -1,17 +1,38 @@
-<h1>Business Bingo Generator</h1>
-<h2>Cartelas geradas</h2>
+<style type="text/css">
+.cartela {
+  border: thin solid;
+  width: 500px;
+}
+.td_bingo {
+  text-align: center;
+}
+.buzz_word {
+  border: thin solid;
+}
+</style>
+
+<p>Você pode <input type="button" onclick="window.print();" value="imprimir"> as cartelas geradas ou <%= link_to "Voltar", :action => :index %> para a tela principal.<p>
+
 <% @cards.each do |card| %>
-   <!--<h3>Cartão #</h3>-->
-   <table border="1" cellspacing="0" width="400px">
-   <% card.each do |line| %>
+<h3>Cartão Núm. 0000</h3>
+  <table class="cartela">
+    <tr>
+      <td class="td_bingo">B</td>
+      <td class="td_bingo">I</td>
+      <td class="td_bingo">N</td>
+      <td class="td_bingo">G</td>
+      <td class="td_bingo">O</td>
+    </tr>
+    <% card.each do |line| %>
       <tr>
-         <% line.each do |word| %>
-            <td><%= word %></td>
-         <% end %>
+      <% line.each do |word| %>
+        <td class="buzz_word"><%= word %></td>
+      <% end %>
       </tr>
-   <% end %>
-   </table>
-   <br/>
+    <% end %>
+  </table>
+  <br/>
 <% end %>
 <br/>
 <%= link_to "Voltar", :action => :index %>
+
