@@ -12,8 +12,6 @@
 
     <% form_for @bingo, :url => { :action => "create" } do |f| %>
       <%= f.error_messages %>
-      <%= f.hidden_field :linhas %>
-      <%= f.hidden_field :colunas %>
       <p>
         <%= f.label :quantidade, "Quantidade de cartelas" %><br />
         <%= f.text_field :quantidade %>
@@ -34,4 +32,3 @@
     </p>
     <%= link_to 'Termos', termos_path %>
   </div>
-

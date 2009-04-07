@@ -8,7 +8,9 @@
   <tr>
     <td><%=h termo.nome %></td>
     <td><%= link_to 'Editar', edit_termo_path(termo) %></td>
-    <td><%= link_to 'Excluir', termo, :confirm => 'Você tem certeza ?', :method => :delete %></td>
+    <td><%=
+          #nao-permitido: link_to 'Excluir', termo, :confirm => 'Você tem certeza?', :method => :delete 
+        %></td>
   </tr>
 <% end %>
 </table>
