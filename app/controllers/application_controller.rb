@@ -7,4 +7,10 @@ class ApplicationController < ActionController::Base
 
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password
+
+  def google_analytics?
+    logger.info "RAILS_ENV = #{RAILS_ENV}"
+    RAILS_ENV == "production"
+  end
+
 end

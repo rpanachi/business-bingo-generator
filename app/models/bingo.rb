@@ -17,7 +17,7 @@ class Bingo < ActiveRecord::Base
   WORDS_LENGTH = 5
 
   def before_initialize
-    self.quantidade = 1
+    self.quantidade = 5
   end
 
   def gera_cartoes
