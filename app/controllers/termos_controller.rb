@@ -5,8 +5,7 @@ class TermosController < ApplicationController
   # GET /termos
   # GET /termos.xml
   def index
-    @termos = Termo.all
-
+    @termos = Termo.find(:all, :order => :nome)
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @termos }
@@ -32,7 +31,6 @@ class TermosController < ApplicationController
   # POST /termos.xml
   def create
     @termo = Termo.new(params[:termo])
-
     respond_to do |format|
       if @termo.save
         flash[:notice] = 'Termo was successfully created.'
@@ -49,7 +47,6 @@ class TermosController < ApplicationController
   # PUT /termos/1.xml
   def update
     @termo = Termo.find(params[:id])
-
     respond_to do |format|
       if @termo.update_attributes(params[:termo])
         flash[:notice] = 'Termo was successfully updated.'
@@ -67,7 +64,6 @@ class TermosController < ApplicationController
   def destroy
     @termo = Termo.find(params[:id])
     @termo.destroy
-
     respond_to do |format|
       format.html { redirect_to(termos_url) }
       format.xml  { head :ok }

@@ -1,29 +1,28 @@
 class Bingo < ActiveRecord::Base
 
   tableless :columns => [
-    [:linhas, :integer],
-    [:colunas, :integer],
     [:quantidade, :integer]
   ]
 
   validates_numericality_of :quantidade, :greater_than => 0, :less_than_or_equal_to => 20
-  validates_numericality_of :linhas, :colunas, :equal_to => 5
 
 =begin #for reference only
   validate :must_validate
   def must_validate
-    logger.info "Quantidade = " + quantidade.to_s
     errors.add_to_base("Quantidade invalida") if quantidade <= 0
   end
 =end
 
+  NUMBER_WORDS = 25
+  WORDS_LENGTH = 5
+
   def before_initialize
-    self.linhas = self.colunas = 5
     self.quantidade = 1
   end
 
   def gera_cartoes
-    logger.info "Quantidade = " + quantidade.to_s
+    raise "Quantidade de cartelas deve ser maior que zero e menor ou igual 20" unless valid?
+    logger.info "Quantidade de cartelas para gerar: " + quantidade.to_s
     cards = Array.new
     quantidade.times do |t|
       cards << generate_card 
@@ -32,15 +31,11 @@ class Bingo < ActiveRecord::Base
   end
 
    def generate_card
-   
-     number_words = linhas * colunas
-     number_columns = colunas
-     random_words = Termo.random number_words
-
+     random_words = Termo.random NUMBER_WORDS
      card = Array.new
-     linhas.times do |line_index|
+     WORDS_LENGTH.times do |line_index|
        words = Array.new 
-       number_columns.times do |i|
+       WORDS_LENGTH.times do |i|
          words << random_words.pop
        end 
        card[line_index] = words
