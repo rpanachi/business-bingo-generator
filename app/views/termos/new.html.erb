@@ -1,4 +1,4 @@
-<h1>New termo</h1>
+<h1>Novo termo</h1>
 
 <% form_for(@termo) do |f| %>
   <%= f.error_messages %>
@@ -8,8 +8,8 @@
     <%= f.text_field :nome %>
   </p>
   <p>
-    <%= f.submit 'Create' %>
+    <%= f.submit 'Cadastrar' %>
   </p>
 <% end %>
 
-<%= link_to 'Back', termos_path %>
+<%= link_to 'Voltar', root_path %>

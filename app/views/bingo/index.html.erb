@@ -1,34 +1,54 @@
+<style type="text/css">
+.bingo {
+  text-align: center;
+}
+.text {
+  font-size: 11pt;
+}
+</style>
 
   <div class="span-15 prepend-1 colborder">
-
-    <p>Driblando o sono em reuniões onde sua presença não serve pra nada e você não vê a hora do coffee break chegar para avançar nas migalhas de biscoitos e café ....<br>
-    Você <b>dorme</b> durante as reuniões de trabalho?<br>
-    Sente um <b>tédio</b> imenso durante as conferências, seminários e colóquios?<br>
-    Seus problemas acabaram!!! Foi criado um método eficaz para combater esse problema!</p>
-    <p>BUSINESS BINGO !!!!!</p>
-    <p>Imprima as cartelas abaixo antes de começar a reunião, seminário, conferência, etc.<br>
-    Sempre que ouvir a palavra ou expressão contida numa das casas, marque a mesma com um (X).<br>
-    Quando completar uma linha, coluna ou diagonal, grite "BINGO"!</p>
+    <span class="text">
+      <p>Você <b>dorme</b> durante as reuniões de trabalho?<br>
+      Sente um <b>tédio</b> imenso durante as conferências, seminários e colóquios?<br>
+      
+      Seus problemas acabaram! Foi criado um método eficaz para combater esse problema:</p>
+    </span>
+    <p class="bingo">
+      <img src="/images/bingo-big.png" alt="Business BINGO!">
+    </p>
+    <p>Gere e imprima as cartelas do BUSINESS-BINGO antes de começar a reunião, seminário, conferência, etc.<br>
+    Sempre que ouvir a palavra ou expressão, marque a mesma com um X. Quando completar uma linha, coluna ou diagonal, grite "BINGO"!</p>
 
     <% form_for @bingo, :url => { :action => "create" } do |f| %>
-      <%= f.error_messages %>
-      <p>
-        <%= f.label :quantidade, "Quantidade de cartelas" %><br />
-        <%= f.text_field :quantidade %>
+      <p align="center">
+        <%= f.label "Quantidade de cartelas: " %>&nbsp;<%= f.text_field :quantidade, :size => "10" %>&nbsp;&nbsp;<%= f.submit 'Gerar!' %>
       </p>
       <p>
-        <%= f.submit 'Gerar Cartelas' %>
+
       </p>
     <% end %>
 
+    <br/>
+    <h3>Testemunho de jogadores satisfeitos</h3>
+    <ul>
+      <li>A reunião só tinha começado há 5 minutos quando ganhei!</li>
+      <li>A minha capacidade para escutar aumentou muito desde comecei a jogar o Business Bingo</li>
+      <li>A atmosfera da última reunião foi muito tensa porque 14 pessoas estavam à espera de preencher a 5ª casa</li>
+      <li>O diretor geral ficou surpreso ao ouvir oito pessoas gritando "BINGO", pela 3ª vez em uma hora</li>
+      <li>Agora, vou a todas as reuniões da minha organização, mesmo que não me convoquem</li>
+    </ul>
+
   </div>
 
+
   <div class="span-7 last">
+    <p style="color: green"><%= flash[:notice] %></p>
     <h3>Termos usados nas cartelas</h3>
     <p>
       <% @termos.each do |termo| %>
-        <%= termo.nome %>
+        <%= link_to termo.nome, edit_termo_path(termo) %>
       <% end %>
     </p>
-    <%= link_to 'Termos', termos_path %>
+    <%= link_to 'Novo Termo', new_termo_path %>
   </div>

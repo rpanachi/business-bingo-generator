@@ -4,7 +4,7 @@ class BingoController < ApplicationController
   before_filter :set_termos
 
   def set_termos
-    @termos = Termo.all
+    @termos = Termo.find(:all, :order => :nome)
   end
 
   def index

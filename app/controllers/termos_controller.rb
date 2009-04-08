@@ -33,12 +33,10 @@ class TermosController < ApplicationController
     @termo = Termo.new(params[:termo])
     respond_to do |format|
       if @termo.save
-        flash[:notice] = 'Termo was successfully created.'
-        format.html { redirect_to :action => "index" }
-        format.xml  { render :xml => @termo, :status => :created, :location => @termo }
+        flash[:notice] = 'Termo cadastrado!'
+        format.html { redirect_to :controller => "bingo", :action => "index" }
       else
         format.html { render :action => "new" }
-        format.xml  { render :xml => @termo.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -49,12 +47,10 @@ class TermosController < ApplicationController
     @termo = Termo.find(params[:id])
     respond_to do |format|
       if @termo.update_attributes(params[:termo])
-        flash[:notice] = 'Termo was successfully updated.'
-        format.html { redirect_to(@termo) }
-        format.xml  { head :ok }
+        flash[:notice] = 'Termo atualizado!'
+format.html { redirect_to :controller => "bingo", :action => "index" }
       else
         format.html { render :action => "edit" }
-        format.xml  { render :xml => @termo.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -62,11 +58,13 @@ class TermosController < ApplicationController
   # DELETE /termos/1
   # DELETE /termos/1.xml
   def destroy
+=begin
     @termo = Termo.find(params[:id])
     @termo.destroy
     respond_to do |format|
       format.html { redirect_to(termos_url) }
       format.xml  { head :ok }
     end
+=end
   end
 end
