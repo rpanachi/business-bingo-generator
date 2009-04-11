@@ -4,22 +4,33 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-  <title>Business BINGO! Generator</title>
+  <meta name="Author" content="1up4Developers, Rodrigo Panachi, Roger Leite">
+  <meta name="KeyWords" content="bingo, business, business bingo, gerador, cartela, sorteio, reunião, buzzword, buzzword bingo">
+  <meta name="Description" content="Gerador de cartelas para o business bingo">
+  <title>Business BINGO Generator</title>
+
   <%= stylesheet_link_tag 'scaffold' %>
   <!-- Framework CSS -->
   <%= stylesheet_link_tag 'blueprint/screen', :media => 'screen, projection' %>
   <%= stylesheet_link_tag 'blueprint/print', :media => 'print' %>
   <!--[if IE]><%= stylesheet_link_tag 'blueprint/ie', :media => 'screen, projection' %><![endif]-->
+
 </head>
 <body>
   <br/>
 	<div class="container">  
-		<h1 align="left"><b>Business BINGO! Generator</b></h1>
-		<h3 class="alt" align="right">Reuniões, seminários, conferências... tudo mais divertido!</h3>
+		<h1>
+		  <b>Business BINGO! Generator</b>
+		</h1>
+		<h3 class="alt" style="text-align: right;">Reuniões, seminários, conferências... tudo mais divertido!</h3>
 	  <hr>
       <%= yield %>
 		<hr>
-    <p align="center"><a href="http://1up4dev.com">1up4developers.com</a> · Visite nosso <a href="http://1up4dev.org">blog</a>  · Entre em <a href="mailto:contato@1up4dev.com">contato</a></p>
+    <p style="text-align: center;">
+      <a href="http://1up4dev.com">1up4developers.com</a>
+       · Visite nosso <a href="http://1up4dev.org">blog</a>
+       · Entre em <a href="mailto:contato@1up4dev.com">contato</a>
+    </p>
 	</div>
 
 <% if controller.google_analytics? then %>

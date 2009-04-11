@@ -17,7 +17,7 @@ class Bingo < ActiveRecord::Base
   WORDS_LENGTH = 5
 
   def before_initialize
-    self.quantidade = 5
+    self.quantidade = 5  #this really works?!?
   end
 
   def gera_cartoes

@@ -1,3 +1,4 @@
+
 <style type="text/css">
 .bingo {
   text-align: center;
@@ -8,26 +9,37 @@
 </style>
 
   <div class="span-15 prepend-1 colborder">
-    <span class="text">
-      <p>Você <b>dorme</b> durante as reuniões de trabalho?<br>
+
+    <p class="text">
+      Você <b>dorme</b> durante as reuniões de trabalho?<br>
       Sente um <b>tédio</b> imenso durante as conferências, seminários e colóquios?<br>
-      
-      Seus problemas acabaram! Foi criado um método eficaz para combater esse problema:</p>
-    </span>
-    <p class="bingo">
-      <img src="/images/bingo-big.png" alt="Business BINGO!">
+      Seus problemas acabaram! Foi criado um método eficaz para combater esse problema.
     </p>
-    <p>Gere e imprima as cartelas do BUSINESS-BINGO antes de começar a reunião, seminário, conferência, etc.<br>
-    Sempre que ouvir a palavra ou expressão, marque a mesma com um X. Quando completar uma linha, coluna ou diagonal, grite "BINGO"!</p>
 
-    <% form_for @bingo, :url => { :action => "create" } do |f| %>
-      <p align="center">
-        <%= f.label "Quantidade de cartelas: " %>&nbsp;<%= f.text_field :quantidade, :size => "10" %>&nbsp;&nbsp;<%= f.submit 'Gerar!' %>
-      </p>
-      <p>
+    <p>
+      <img style="text-align: center;" src="/images/bingo-big.png" alt="Business BINGO!">
+    </p>
 
-      </p>
-    <% end %>
+    <h3>Quero Jogar!</h3>
+
+    <div>
+      <% form_for @bingo, :url => { :action => "create" } do |f| %>
+        <p align="center">
+          <%= f.label "Quantidade:" %>&nbsp;
+          <%= f.text_field :quantidade, :size => "3" %>&nbsp;&nbsp;
+          <%= f.submit 'Gerar Cartelas!' %>
+        </p>
+        <p>
+
+        </p>
+      <% end %>
+    </div>
+
+    <p class="text">
+      As cartelas são geradas com os termos ao lado.<br>
+      Sempre que ouvir a palavra ou expressão, marque a mesma com um X.<br>
+      Quando completar uma linha, coluna ou diagonal, grite BINGO!
+    </p>
 
     <br/>
     <h3>Testemunho de jogadores satisfeitos</h3>

@@ -8,7 +8,7 @@ class BingoController < ApplicationController
   end
 
   def index
-    @bingo = Bingo.new :quantidade => 1
+    @bingo = Bingo.new :quantidade => 5
   end
 
   def create
