@@ -1,6 +1,5 @@
 class BingoController < ApplicationController
 
-  layout "default"
   before_filter :set_termos
 
   def set_termos

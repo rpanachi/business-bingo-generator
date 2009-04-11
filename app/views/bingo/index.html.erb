@@ -1,12 +1,14 @@
 
-<style type="text/css">
+<% content_for :head_style do %>
+
 .bingo {
   text-align: center;
 }
 .text {
   font-size: 11pt;
 }
-</style>
+
+<% end %> 
 
   <div class="span-15 prepend-1 colborder">
 
@@ -17,7 +19,7 @@
     </p>
 
     <p>
-      <img style="text-align: center;" src="/images/bingo-big.png" alt="Business BINGO!">
+      <%= image_tag "bingo-big.png", :alt => "Business BINGO!", :style => "text-align: center;" %>
     </p>
 
     <h3>Quero Jogar!</h3>

@@ -1,4 +1,6 @@
-<style type="text/css">
+
+<% content_for :head_style do %>
+
 .cartela {
   border: thin solid;
   width: 500px;
@@ -10,7 +12,8 @@
   border: thin solid;
   width: 20%;
 }
-</style>
+
+<% end %> 
 
 <p>Você pode <input type="button" onclick="window.print();" value="imprimir"> as cartelas geradas ou <%= link_to "Voltar", :action => :index %> para a tela principal.<p>
 

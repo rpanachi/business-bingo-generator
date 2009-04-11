@@ -1,7 +1,5 @@
 class TermosController < ApplicationController
 
-  layout "default"
-
   # GET /termos
   # GET /termos.xml
   def index
