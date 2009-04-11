@@ -36,13 +36,13 @@ Rails::Initializer.run do |config|
   config.time_zone = 'UTC'
 
   # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
-  # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}')]
-  # config.i18n.default_locale = :de
+  config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}')]
+  config.i18n.default_locale = :pt
 end
 
 ActionView::Base.field_error_proc = Proc.new do |html_tag, instance| 
   if instance.error_message.kind_of?(Array)  
-    %(#{html_tag}<span class="validation-error">&nbsp;  #{instance.error_message.join(',')}</span>)  
+    %(#{html_tag}<span class="validation-error">&nbsp;  #{instance.error_message.join(', ')}</span>)  
   else  
     %(#{html_tag}<span class="validation-error">&nbsp;  #{instance.error_message}</span>)
   end 

@@ -1,0 +1,32 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+pt:
+  activerecord:
+    errors:
+      messages:
+        inclusion: "is not included in the list"
+        exclusion: "is reserved"
+        invalid: "não é válido"
+        confirmation: "doesn't match confirmation"
+        accepted: "must be accepted"
+        empty: "não pode ser vazio"
+        blank: "não pode ser branco"
+        too_long: "is too long (maximum is %d characters)"
+        too_short: "is too short (minimum is {{count}} characters)"
+        wrong_length: "is the wrong length (should be {{count}} characters)"
+        taken: "já está em uso"
+        not_a_number: "não é um número"
+        greater_than: "deve ser maior que %d"
+        greater_than_or_equal_to: "deve ser maior ou igual a {{count}}"
+        equal_to: "deve ser igual a {{count}}"
+        less_than: "deve ser menor que {{count}}"
+        less_than_or_equal_to: "deve ser menor ou igual a {{count}}"
+        odd: "deve ser par"
+        even: "deve ser impar"
+      template:
+        header:
+          one: "1 erro não permite que este {{model}} seja gravado"
+          other:  "{{count}} erros não permitem que este {{model}} seja gravado"
+        body: "Há problemas com os sequintes campos:"
+      
