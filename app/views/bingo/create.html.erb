@@ -18,7 +18,7 @@
 <p>Você pode <input type="button" onclick="window.print();" value="imprimir"> as cartelas geradas ou <%= link_to "Voltar", :action => :index %> para a tela principal.<p>
 
 <% @cards.each do |card| %>
-<h3>Cartão Núm. 0000</h3>
+<h3>Cartela #<%=card.id%></h3>
   <table class="cartela">
     <tr>
       <td class="td_bingo">B</td>
@@ -27,10 +27,10 @@
       <td class="td_bingo">G</td>
       <td class="td_bingo">O</td>
     </tr>
-    <% card.each do |line| %>
+    <% card.termos.each do |line| %>
       <tr>
       <% line.each do |word| %>
-        <td class="buzz_word"><%= word %></td>
+        <td class="buzz_word"><%= word.nome %></td>
       <% end %>
       </tr>
     <% end %>

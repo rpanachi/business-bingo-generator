@@ -15,24 +15,22 @@
     <p class="text">
       Você <b>dorme</b> durante as reuniões de trabalho?<br>
       Sente um <b>tédio</b> imenso durante as conferências, seminários e colóquios?<br>
-      Seus problemas acabaram! Foi criado um método eficaz para combater esse problema.
+      Seus problemas acabaram! Foi criado um método eficaz para combater esse problema:
     </p>
 
-    <p>
-      <%= image_tag "bingo-big.png", :alt => "Business BINGO!", :style => "text-align: center;" %>
+    <p class="bingo">
+      <%= image_tag "bingo-big.png", :alt => "Business BINGO!" %>
     </p>
-
+    
+    <br/>
     <h3>Quero Jogar!</h3>
-
+    
     <div>
       <% form_for @bingo, :url => { :action => "create" } do |f| %>
         <p align="center">
           <%= f.label "Quantidade:" %>&nbsp;
           <%= f.text_field :quantidade, :size => "3" %>&nbsp;&nbsp;
           <%= f.submit 'Gerar Cartelas!' %>
-        </p>
-        <p>
-
         </p>
       <% end %>
     </div>
@@ -45,16 +43,15 @@
 
     <br/>
     <h3>Testemunho de jogadores satisfeitos</h3>
-    <ul>
-      <li>A reunião só tinha começado há 5 minutos quando ganhei!</li>
-      <li>A minha capacidade para escutar aumentou muito desde comecei a jogar o Business Bingo</li>
-      <li>A atmosfera da última reunião foi muito tensa porque 14 pessoas estavam à espera de preencher a 5ª casa</li>
-      <li>O diretor geral ficou surpreso ao ouvir oito pessoas gritando "BINGO", pela 3ª vez em uma hora</li>
-      <li>Agora, vou a todas as reuniões da minha organização, mesmo que não me convoquem</li>
-    </ul>
+    <blockquote>
+      A reunião só tinha começado há 5 minutos quando ganhei!<br/>
+      A minha capacidade para escutar aumentou muito desde comecei a jogar o Business Bingo<br/>
+      A última reunião foi muito tensa porque 14 pessoas estavam à espera de preencher a 5ª casa<br/>
+      O diretor geral ficou surpreso ao ouvir oito pessoas gritando "BINGO" pela 3ª vez em uma hora<br/>
+      Agora vou a todas as reuniões da minha organização, mesmo que não me convoquem<br/>
+    </blockquote>
 
   </div>
-
 
   <div class="span-7 last">
     <p style="color: green"><%= flash[:notice] %></p>

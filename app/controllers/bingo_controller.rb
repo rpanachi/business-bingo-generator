@@ -15,7 +15,7 @@ class BingoController < ApplicationController
     if (!@bingo.valid?) 
       render :action => "index"
     else
-       @cards = @bingo.gera_cartoes
+      @cards = @bingo.criar_cartelas
     end
   end
 

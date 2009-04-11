@@ -6,41 +6,36 @@ class Bingo < ActiveRecord::Base
 
   validates_numericality_of :quantidade, :greater_than => 0, :less_than_or_equal_to => 20
 
-=begin #for reference only
-  validate :must_validate
-  def must_validate
-    errors.add_to_base("Quantidade invalida") if quantidade <= 0
-  end
-=end
-
   NUMBER_WORDS = 25
   WORDS_LENGTH = 5
 
   def before_initialize
-    self.quantidade = 5  #this really works?!?
+    self.quantidade = 5
   end
 
-  def gera_cartoes
+  def criar_cartelas
     raise "Quantidade de cartelas deve ser maior que zero e menor ou igual 20" unless valid?
     logger.info "Quantidade de cartelas para gerar: " + quantidade.to_s
-    cards = Array.new
+    cartelas = Array.new
     quantidade.times do |t|
-      cards << generate_card 
+      cartela = criar_cartela
+      cartela.id = t + 1
+      cartelas << cartela
     end
-    cards
+    cartelas
   end
 
-   def generate_card
-     random_words = Termo.random NUMBER_WORDS
-     card = Array.new
-     WORDS_LENGTH.times do |line_index|
-       words = Array.new 
-       WORDS_LENGTH.times do |i|
-         words << random_words.pop
-       end 
-       card[line_index] = words
-     end
-     card
-   end
+  def criar_cartela
+    random_words = Termo.random NUMBER_WORDS
+    card = Cartela.new
+    WORDS_LENGTH.times do |line_index|
+      words = Array.new 
+      WORDS_LENGTH.times do |i|
+        words << random_words.pop
+      end 
+      card.termos << words
+    end
+    card
+  end
 
 end

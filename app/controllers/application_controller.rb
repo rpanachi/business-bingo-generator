@@ -11,7 +11,6 @@ class ApplicationController < ActionController::Base
   # filter_parameter_logging :password
 
   def google_analytics?
-    logger.info "RAILS_ENV = #{RAILS_ENV}"
     RAILS_ENV == "production"
   end
 
