@@ -1,0 +1,69 @@
+
+<% content_for :head_style do %>
+
+.bingo {
+  text-align: center;
+}
+.text {
+  font-size: 11pt;
+}
+
+<% end %> 
+
+  <div class="span-15 prepend-1 colborder">
+
+    <p class="text">
+      Você <b>dorme</b> durante as reuniões de trabalho?<br>
+      Sente um <b>tédio</b> imenso durante as conferências, seminários e colóquios?<br>
+      Seus problemas acabaram! Foi criado um método eficaz para combater esse problema:
+    </p>
+
+    <p class="bingo">
+      <%= image_tag "bingo-big.png", :alt => "Business BINGO!" %>
+    </p>
+    
+    <br/>
+    <h3>Quero Jogar!</h3>
+    
+    <div>
+      <% form_for @bingo, :url => { :action => "create" } do |f| %>
+        <p align="center">
+          <%= f.label "Quantidade:" %>&nbsp;
+          <%= f.text_field :quantidade, :size => "3" %>&nbsp;&nbsp;
+          <%= f.submit 'Gerar Cartelas!' %>
+        </p>
+      <% end %>
+    </div>
+
+    <p class="text">
+      As cartelas são geradas com os termos ao lado.<br>
+      Sempre que ouvir a palavra ou expressão, marque a mesma com um X.<br>
+      Quando completar uma linha, coluna ou diagonal, grite BINGO!
+    </p>
+
+    <p class="text">
+      <b><a href="http://1up4dev.org/2009/04/business-bingo-generator/">Comentários, sugestões, reclamações e elogios</a></b> são sempre bem vindos!<br>
+    </p>
+
+    <br/>
+    <h3>Testemunho de jogadores satisfeitos</h3>
+    <blockquote>
+      A reunião só tinha começado há 5 minutos quando ganhei!<br/>
+      A minha capacidade para escutar aumentou muito desde comecei a jogar o Business Bingo<br/>
+      A última reunião foi muito tensa porque 14 pessoas estavam à espera de preencher a 5ª casa<br/>
+      O diretor geral ficou surpreso ao ouvir oito pessoas gritando "BINGO" pela 3ª vez em uma hora<br/>
+      Agora vou a todas as reuniões da minha organização, mesmo que não me convoquem<br/>
+    </blockquote>
+
+  </div>
+
+  <div class="span-7 last">
+    <p style="color: green"><%= flash[:notice] %></p>
+    <h3>Termos usados nas cartelas</h3>
+    <p>
+      <% @termos.each do |termo| %>
+        <%= link_to termo.nome, edit_termo_path(termo) %>
+      <% end %>
+    </p>
+    <%= link_to 'Novo Termo', new_termo_path %>
+  </div>

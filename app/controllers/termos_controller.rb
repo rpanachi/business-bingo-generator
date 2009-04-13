@@ -3,7 +3,7 @@ class TermosController < ApplicationController
   # GET /termos
   # GET /termos.xml
   def index
-    @termos = Termo.find(:all, :order => :nome)
+    @termos = Termo.find_all_by_locale(user_locale, :order => :nome)
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @termos }
@@ -29,9 +29,10 @@ class TermosController < ApplicationController
   # POST /termos.xml
   def create
     @termo = Termo.new(params[:termo])
+    @termo.locale = user_locale
     respond_to do |format|
       if @termo.save
-        flash[:notice] = 'Termo cadastrado!'
+        flash[:notice] = translate :created, :model => Termo.model_name
         format.html { redirect_to :controller => "bingo", :action => "index" }
       else
         format.html { render :action => "new" }
@@ -43,10 +44,11 @@ class TermosController < ApplicationController
   # PUT /termos/1.xml
   def update
     @termo = Termo.find(params[:id])
+    @termo.locale = user_locale
     respond_to do |format|
       if @termo.update_attributes(params[:termo])
-        flash[:notice] = 'Termo atualizado!'
-format.html { redirect_to :controller => "bingo", :action => "index" }
+        flash[:notice] = translate :updated, :model => Termo.model_name
+        format.html { redirect_to :controller => "bingo", :action => "index" }
       else
         format.html { render :action => "edit" }
       end

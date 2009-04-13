@@ -1,0 +1,42 @@
+
+<% content_for :head_style do %>
+
+.cartela {
+  border: thin solid;
+  width: 500px;
+}
+.td_bingo {
+  text-align: center;
+}
+.buzz_word {
+  border: thin solid;
+  width: 20%;
+}
+
+<% end %> 
+
+<p>Você pode <input type="button" onclick="window.print();" value="imprimir"> as cartelas geradas ou <%= link_to "Voltar", :action => :index %> para a tela principal.<p>
+
+<% @cards.each do |card| %>
+<h3>Cartela #<%=card.id%></h3>
+  <table class="cartela">
+    <tr>
+      <td class="td_bingo">B</td>
+      <td class="td_bingo">I</td>
+      <td class="td_bingo">N</td>
+      <td class="td_bingo">G</td>
+      <td class="td_bingo">O</td>
+    </tr>
+    <% card.termos.each do |line| %>
+      <tr>
+      <% line.each do |word| %>
+        <td class="buzz_word"><%= word.nome %></td>
+      <% end %>
+      </tr>
+    <% end %>
+  </table>
+  <br/>
+<% end %>
+<br/>
+<%= link_to "Voltar", :action => :index %>
+

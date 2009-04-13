@@ -3,7 +3,7 @@ class BingoController < ApplicationController
   before_filter :set_termos
 
   def set_termos
-    @termos = Termo.find(:all, :order => :nome)
+    @termos = Termo.find_all_by_locale(user_locale, :order => :nome)
   end
 
   def index
@@ -11,11 +11,14 @@ class BingoController < ApplicationController
   end
 
   def create
-    @bingo = Bingo.new :quantidade => params[:bingo][:quantidade]
+    @bingo = Bingo.new
+    @bingo.quantidade = params[:bingo][:quantidade]
+    @bingo.locale = user_locale
+
     if (!@bingo.valid?) 
       render :action => "index"
     else
-      @cards = @bingo.criar_cartelas
+      @cards = @bingo.criar_cartelas 
     end
   end
 

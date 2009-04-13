@@ -14,4 +14,10 @@ class ApplicationController < ActionController::Base
     RAILS_ENV == "production"
   end
 
+  def user_locale
+    locale = request.env['HTTP_ACCEPT_LANGUAGE'].scan(/^[a-z]{2}/).first
+    I18n.locale = locale
+    I18n.locale.to_s
+  end
+
 end

@@ -1,7 +1,8 @@
 class Bingo < ActiveRecord::Base
 
   tableless :columns => [
-    [:quantidade, :integer]
+    [:quantidade, :integer],
+    [:locale, :string]
   ]
 
   validates_numericality_of :quantidade, :greater_than => 0, :less_than_or_equal_to => 20
@@ -26,7 +27,7 @@ class Bingo < ActiveRecord::Base
   end
 
   def criar_cartela
-    random_words = Termo.random NUMBER_WORDS
+    random_words = Termo.random NUMBER_WORDS, locale
     card = Cartela.new
     WORDS_LENGTH.times do |line_index|
       words = Array.new 
