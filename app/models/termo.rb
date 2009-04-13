@@ -15,4 +15,9 @@ class Termo < ActiveRecord::Base
     termos
   end
 
+  before_save :prepare
+
+  def prepare
+    nome.capitalize!
+  end
 end
