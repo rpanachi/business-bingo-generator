@@ -10,7 +10,7 @@ class Termo < ActiveRecord::Base
     while termos.size < quantidade do
       index = rand todos.size
       termo = todos[index]
-      termos << termo #unless termos.include? termo
+      termos << termo unless termos.include? termo
     end
     termos
   end

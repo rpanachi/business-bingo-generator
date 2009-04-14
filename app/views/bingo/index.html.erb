@@ -36,7 +36,7 @@
     </div>
 
     <p class="text">
-      As cartelas são geradas com os termos ao lado.<br>
+      As cartelas são geradas com as buzzwords ao lado.<br>
       Sempre que ouvir a palavra ou expressão, marque a mesma com um X.<br>
       Quando completar uma linha, coluna ou diagonal, grite BINGO!
     </p>
@@ -59,11 +59,11 @@
 
   <div class="span-7 last">
     <p style="color: green"><%= flash[:notice] %></p>
-    <h3>Termos usados nas cartelas</h3>
+    <h3>Buzzwords usadas nas cartelas</h3>
     <p>
       <% @termos.each do |termo| %>
         <%= link_to termo.nome, edit_termo_path(termo) %>
       <% end %>
     </p>
-    <%= link_to 'Novo Termo', new_termo_path %>
+    <%= link_to 'Nova Buzzword', new_termo_path %>
   </div>
