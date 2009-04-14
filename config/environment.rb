@@ -47,3 +47,18 @@ ActionView::Base.field_error_proc = Proc.new do |html_tag, instance|
     %(#{html_tag}<span class="validation-error">&nbsp;  #{instance.error_message}</span>)
   end 
 end 
+
+require 'smtp_tls'
+
+#ActionMailer::Base.perform_deliveries = true 
+#ActionMailer::Base.raise_delivery_errors = true 
+ActionMailer::Base.default_content_type = "text/html"
+ActionMailer::Base.delivery_method = :sendmail
+ActionMailer::Base.smtp_settings = {
+  :address => "",
+  :port => 587,
+  :authentication => :login,
+  :domain => "",
+  :user_name => "",
+  :password => ""
+}

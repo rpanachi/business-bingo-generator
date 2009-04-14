@@ -31,6 +31,7 @@ class TermosController < ApplicationController
     @termo = Termo.new(params[:termo])
     respond_to do |format|
       if @termo.save
+        Admin.deliver_notification(:subject => "[Business-BINGO] Termo cadastrado", :values => { :id => @termo.id, :nome => @termo.nome, :locale => @termo.locale })
         flash[:notice] = 'Termo cadastrado!'
         format.html { redirect_to :controller => "bingo", :action => "index" }
       else
@@ -45,8 +46,9 @@ class TermosController < ApplicationController
     @termo = Termo.find(params[:id])
     respond_to do |format|
       if @termo.update_attributes(params[:termo])
+        Admin.deliver_notification(:subject => "[Business-BINGO] Termo atualizado", :values => { :id => @termo.id, :nome => @termo.nome, :locale => @termo.locale })
         flash[:notice] = 'Termo atualizado!'
-format.html { redirect_to :controller => "bingo", :action => "index" }
+        format.html { redirect_to :controller => "bingo", :action => "index" }
       else
         format.html { render :action => "edit" }
       end
